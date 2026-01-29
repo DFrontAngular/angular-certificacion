@@ -1,0 +1,76 @@
+.modal-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 32, 36, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 18px #0003;
+  padding: 1.7rem 2rem;
+  max-width: 92vw;
+  min-width: 280px;
+}
+
+.button-row {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: 10px;
+}
+
+.user-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px dashed #eaeaea;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.user-role-badge {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.98em;
+  min-width: 60px;
+  text-align: center;
+  align-self: flex-start;
+}
+
+.modal-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 1.3rem;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.form-btn-row {
+  margin-top: 28px;
+  display: flex;
+  gap: 8px;
+}
+
+.form-grid .field-full {
+  width: 100%;
+}

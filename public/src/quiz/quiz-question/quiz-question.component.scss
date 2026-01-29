@@ -1,0 +1,17 @@
+/* Optimiza la visual y alineación para preguntas tipo test */
+.quiz-answer-label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 6px 0;
+}
+
+.quiz-answer-label-text {
+  flex: 1;
+}
+
+.quiz-answer-radio {
+  flex: 0 0 auto;
+  min-width: 20px;
+  max-width: 24px;
+}

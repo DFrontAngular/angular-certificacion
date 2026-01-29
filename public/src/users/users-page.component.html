@@ -1,0 +1,92 @@
+<section class="grid">
+  <div class="col-8">
+    <div class="card">
+      <span class="kicker">Listado</span>
+      <h2>Usuarios</h2>
+      @if (users().length === 0) {
+        <p>No hay usuarios</p>
+      } @else {
+        <ul class="list">
+          @for (u of users(); track trackById($index, u)) {
+            <li class="user-list-item">
+              <div class="user-info">
+                <strong>{{ u.name }}</strong>
+                <div class="muted">{{ u.email }}</div>
+                <span class="badge user-role-badge">{{ u.role }}</span>
+              </div>
+              <div class="button-row">
+                <button type="button" class="btn btn-sm" (click)="startEdit(u)" aria-label="Editar {{ u.name }}">Editar</button>
+                <button type="button" class="btn btn-sm btn-danger" (click)="pedirEliminacion(u)" aria-label="Eliminar {{ u.name }}">Eliminar</button>
+              </div>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <span class="kicker">
+        @if (idEnEdicion !== null) { Editar } @else { Nuevo }
+      </span>
+      <h3>
+        @if (idEnEdicion !== null) { Editar usuario } @else { Añadir usuario }
+      </h3>
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate aria-labelledby="formTitle">
+        <div class="form-grid">
+          <div class="field field-full">
+            <label for="name">Nombre</label>
+            <input id="name" formControlName="name" placeholder="Ej: Fran García" />
+            @if (form.controls.name.touched && form.controls.name.invalid) {
+              <small class="error" aria-live="polite">
+                @if (form.controls.name.errors?.['required']) { El nombre es obligatorio. }
+                @if (form.controls.name.errors?.['minlength']) { Mínimo 3 caracteres. }
+              </small>
+            }
+          </div>
+          <div class="field field-full">
+            <label for="email">Email</label>
+            <input id="email" formControlName="email" placeholder="Ej: fran@gmail.com" />
+            @if (form.controls.email.touched && form.controls.email.invalid) {
+              <small class="error" aria-live="polite">
+                @if (form.controls.email.errors?.['required']) { El email es obligatorio. }
+                @if (form.controls.email.errors?.['email']) { Email no válido. }
+              </small>
+            }
+          </div>
+          <div class="field field-full">
+            <label for="role">Rol</label>
+            <select id="role" formControlName="role">
+              <option value="Admin">Admin</option>
+              <option value="Editor">Editor</option>
+              <option value="Viewer">Viewer</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-btn-row">
+          <button class="btn" type="submit" [disabled]="form.invalid" 
+            aria-label="@if(idEnEdicion !== null){Guardar cambios}else{Añadir usuario}">
+            @if (idEnEdicion !== null) { Guardar cambios } @else { Añadir usuario }
+          </button>
+          @if (idEnEdicion !== null) {
+            <button class="btn btn-outline" type="button" (click)="cancelEdit()" aria-label="Cancelar edición">Cancelar</button>
+          }
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación -->
+  @if (modalAbierto && usuarioAEliminar) {
+    <div class="modal-backdrop">
+      <div class="modal">
+        <h3 class="no-margin-top">¿Eliminar usuario?</h3>
+        <p>¿Seguro que quieres eliminar a <strong>{{ usuarioAEliminar.name }}</strong>? Esta acción no se puede deshacer.</p>
+        <div class="modal-btns">
+          <button type="button" class="btn btn-outline" (click)="cancelarEliminacion()">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="confirmarEliminacion()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  }
+</section>

@@ -1,0 +1,39 @@
+<section class="grid">
+  <div class="col-8">
+    <div class="card">
+      <span class="kicker">Evaluación</span>
+      <h2>Angular Basics Quiz</h2>
+      <p class="lead">Responde a las preguntas. Dispones de 3 minutos.</p>
+      <div class="timer" style="margin-bottom:12px">
+        <app-quiz-timer [timeLeft]="timeLeft()"></app-quiz-timer>
+      </div>
+      <fieldset>
+        <legend class="sr-only">Preguntas</legend>
+        @for (q of questions(); track trackByIndex($index); let i = $index) {
+          <app-quiz-question
+            [question]="q"
+            [index]="i"
+            [disabled]="finished()"
+            (answered)="onAnswer(i, $event)">
+          </app-quiz-question>
+        }
+      </fieldset>
+      <div class="button-row">
+        <button class="btn" (click)="finish()" [disabled]="finished()" aria-label="Finalizar quiz">Finalizar</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <span class="kicker">Resultado</span>
+      <h3>Estado</h3>
+      <div aria-live="polite">
+        @if (finished()) {
+          <app-quiz-result [score]="score()" [total]="total()"></app-quiz-result>
+        } @else {
+          <p class="lead">Aún no has finalizado.</p>
+        }
+      </div>
+    </div>
+  </div>
+</section>

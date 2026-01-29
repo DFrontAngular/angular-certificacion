@@ -1,0 +1,8 @@
+<h3>Resultado: {{ score }}/{{ total }}</h3>
+@if (score === total) {
+  <p>¡Perfecto! 🎉</p>
+} @else if (score >= total / 2) {
+  <p>Buen trabajo.</p>
+} @else {
+  <p>Sigue practicando 💪</p>
+}

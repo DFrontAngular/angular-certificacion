@@ -1,0 +1,1 @@
+export interface Question { q: string; answers: string[]; correctIndex: number; }

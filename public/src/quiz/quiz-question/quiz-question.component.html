@@ -1,0 +1,19 @@
+<article style="margin:12px 0">
+  <strong>Q{{ index + 1 }}. {{ question.q }}</strong>
+  <div role="radiogroup" [attr.aria-labelledby]="'q' + index">
+    @for (ans of question.answers; track ans; let j = $index) {
+      <label class="quiz-answer-label" [for]="idFor(j)">
+        <span class="quiz-answer-label-text">{{ ans }}</span>
+        <input
+          class="quiz-answer-radio"
+          type="radio"
+          [id]="idFor(j)"
+          [name]="'q' + index"
+          [value]="j"
+          (change)="answered.emit(j)"
+          [disabled]="disabled"
+        />
+      </label>
+    }
+  </div>
+</article>
