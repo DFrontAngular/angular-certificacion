@@ -1,0 +1,10 @@
+<h2>Ejercicio 1 · La lista no se actualiza tras modificar un elemento</h2>
+<p class="muted">
+  Se cambia el nombre del primer usuario, pero el listado de abajo puede no reflejarlo.
+</p>
+
+<ul class="list">
+  @for (u of users; track trackById($index, u)) {
+    <li>{{ u.name }}</li>
+  }
+</ul>

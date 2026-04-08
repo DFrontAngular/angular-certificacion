@@ -1,0 +1,11 @@
+<h2>Ejercicio 3 · Error típico async en template</h2>
+<p class="muted">
+  Al cargar el componente, la plantilla accede a una propiedad antes de que exista.
+  Observa la consola.
+</p>
+
+<!-- BUG: acceso directo antes de tener datos -->
+<div class="box">
+  <p><strong>Nombre:</strong> {{ profile.name }}</p>
+  <p><strong>Email:</strong> {{ profile.email }}</p>
+</div>

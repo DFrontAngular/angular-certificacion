@@ -1,0 +1,6 @@
+.row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 14px; }
+.panel { border-top: 1px dashed var(--border); padding-top: 12px; }
+.muted { color: var(--muted); margin: 6px 0; }
+.btn { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--primary); color: #fff; cursor: pointer; }
+.btn.secondary { background: #fff; color: var(--text); }
+.btn:disabled { opacity: .6; cursor: not-allowed; }

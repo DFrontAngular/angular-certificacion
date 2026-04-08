@@ -1,0 +1,24 @@
+.page { display: block; }
+
+.page-header { margin-bottom: 16px; }
+.page-header h1 { margin: 0 0 6px 0; font-size: 22px; }
+.muted { color: var(--muted); margin: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .grid > :last-child { grid-column: 1 / -1; }
+}
+
+.card {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}

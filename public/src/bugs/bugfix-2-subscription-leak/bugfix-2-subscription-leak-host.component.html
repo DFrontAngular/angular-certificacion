@@ -1,0 +1,17 @@
+<h2>Ejercicio 2 · Fuga por suscripción</h2>
+<p class="muted">
+  Haz clic en “Ocultar/Mostrar” varias veces. Si el contador empieza a subir más rápido de 1 por segundo,
+  hay un problema de suscripción no liberada.
+</p>
+
+<button class="btn" type="button" (click)="toggle()">
+  {{ show() ? 'Ocultar' : 'Mostrar' }}
+</button>
+
+<div class="panel">
+  @if (show()) {
+    <app-bugfix2-subscription-leak></app-bugfix2-subscription-leak>
+  } @else {
+    <p class="muted">Componente desmontado.</p>
+  }
+</div>

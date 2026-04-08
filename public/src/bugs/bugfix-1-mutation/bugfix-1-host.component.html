@@ -1,0 +1,14 @@
+<h2>Ejercicio 1 · Lista no actualiza</h2>
+<p class="muted">
+  Pulsa “Renombrar primero”. Si el listado inferior no cambia, hay un problema de actualización.
+</p>
+
+<div class="row">
+  <button class="btn" type="button" (click)="renameFirst()">Renombrar primero</button>
+  <button class="btn secondary" type="button" (click)="reset()">Reset</button>
+</div>
+
+<div class="panel">
+  <p class="muted">Listado (child OnPush):</p>
+  <app-bugfix1-mutation-list [users]="users"></app-bugfix1-mutation-list>
+</div>
